@@ -11,10 +11,10 @@ import com.ego.pojo.TbItem;
 @Service
 public class TbItemServiceImpl implements TbItemService{
 	@Reference
-	private TbItemDubboService tbItemDubboServiceImpl;
+	private TbItemDubboService tbItemDubboService;
 	@Override
 	public EasyUIDataGrid show(int page, int rows) {
-		return tbItemDubboServiceImpl.show(page, rows);
+		return tbItemDubboService.show(page, rows);
 	}
 	@Override
 	public int update(String ids, byte status) {
@@ -24,7 +24,7 @@ public class TbItemServiceImpl implements TbItemService{
 		for (String id : idsStr) {
 			item.setId(Long.parseLong(id));
 			item.setStatus(status);
-			index +=tbItemDubboServiceImpl.updItemStatus(item);
+			index +=tbItemDubboService.updItemStatus(item);
 		}
 		if(index==idsStr.length){
 			return 1;

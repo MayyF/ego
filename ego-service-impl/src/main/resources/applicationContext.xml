@@ -28,6 +28,7 @@
     	<property name="dataSource" ref="dataSource"></property>
     	<property name="typeAliasesPackage" value="com.ego.pojo"></property>
     	<property name="configLocation" value="classpath:mybatis.xml"></property>
+		<property name="mapperLocations" value="classpath:com/ego/mapper/*.xml"/>
     </bean>
     <!-- 扫描器 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
