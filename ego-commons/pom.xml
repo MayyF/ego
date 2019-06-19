@@ -11,5 +11,12 @@
 
     <artifactId>ego-commons</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>commons-net</groupId>
+            <artifactId>commons-net</artifactId>
+        </dependency>
+    </dependencies>
+
 
 </project>
