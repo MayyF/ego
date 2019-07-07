@@ -35,7 +35,7 @@
 		</ul>
 	</li>
 </div>
-<script style="text/javascript">
+<script>
 	$(function(){
 		EGO.initItemCat({
 			fun:function(node){
@@ -99,6 +99,11 @@
 						$(".panel-tool-close").click();
     					$("#itemParamList").datagrid("reload");
     				});
+				}else{
+                    $.messager.alert('提示','新增商品规格失败!',undefined,function(){
+                        $(".panel-tool-close").click();
+                        $("#itemParamList").datagrid("reload");
+                    });
 				}
 			});
 		});

@@ -1,5 +1,9 @@
 package com.ego.manage.service.impl;
 
+import com.ego.commons.utils.IDUtils;
+import com.ego.pojo.TbItemDesc;
+import com.ego.pojo.TbItemParam;
+import com.ego.pojo.TbItemParamItem;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.dubbo.config.annotation.Reference;
@@ -8,10 +12,14 @@ import com.ego.dubbo.service.TbItemDubboService;
 import com.ego.manage.service.TbItemService;
 import com.ego.pojo.TbItem;
 
+import java.util.Date;
+
 @Service
 public class TbItemServiceImpl implements TbItemService{
 	@Reference
 	private TbItemDubboService tbItemDubboService;
+
+
 	@Override
 	public EasyUIDataGrid show(int page, int rows) {
 		return tbItemDubboService.show(page, rows);
@@ -30,5 +38,33 @@ public class TbItemServiceImpl implements TbItemService{
 			return 1;
 		}
 		return 0;
+	}
+
+	@Override
+	public int sava(TbItem item, String desc,String itemParams) throws Exception {
+		long id= IDUtils.genItemId();
+		item.setId(id);
+		Date date=new Date();
+		item.setCreated(date);
+		item.setUpdated(date);
+		item.setStatus((byte)1);
+		TbItemDesc itemDesc=new TbItemDesc();
+		itemDesc.setItemId(id);
+		itemDesc.setItemDesc(desc);
+		itemDesc.setCreated(date);
+		itemDesc.setUpdated(date);
+
+		TbItemParamItem param=new TbItemParamItem();
+		param.setUpdated(date);
+		param.setCreated(date);
+		param.setItemId(id);
+		param.setParamData(itemParams);
+
+
+		int index=0;
+		index=tbItemDubboService.insTbItemDesc(item,itemDesc,param);
+		System.out.println("index:"+index);
+
+		return index;
 	}
 }

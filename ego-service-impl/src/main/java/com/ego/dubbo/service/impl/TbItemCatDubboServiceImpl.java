@@ -24,4 +24,9 @@ public class TbItemCatDubboServiceImpl implements TbItemCatDubboService {
         return tbItemCatMapper.selectByExample(example);
 
     }
+
+    @Override
+    public TbItemCat selById(long id) {
+        return tbItemCatMapper.selectByPrimaryKey(id);
+    }
 }

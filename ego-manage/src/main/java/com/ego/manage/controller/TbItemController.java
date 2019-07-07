@@ -2,6 +2,7 @@ package com.ego.manage.controller;
 
 import javax.annotation.Resource;
 
+import com.ego.pojo.TbItem;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -73,6 +74,23 @@ public class TbItemController {
 		int index = tbItemServiceImpl.update(ids, (byte)1);
 		if(index==1){
 			er.setStatus(200);
+		}
+		return er;
+	}
+
+	@RequestMapping("item/save")
+	@ResponseBody
+	public EgoResult insert(TbItem item,String desc,String itemParams){
+		EgoResult er=new EgoResult();
+		int index=0;
+		try {
+			index=tbItemServiceImpl.sava(item,desc,itemParams);
+			if(index==1){
+				er.setStatus(200);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			er.setData(e.getMessage());
 		}
 		return er;
 	}

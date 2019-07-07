@@ -12,4 +12,6 @@ public interface TbItemCatDubboService {
 
     List<TbItemCat>show(long pid);
 
+    TbItemCat selById(long id);
+
 }
