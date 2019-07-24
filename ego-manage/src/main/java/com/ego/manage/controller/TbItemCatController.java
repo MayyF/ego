@@ -1,7 +1,9 @@
 package com.ego.manage.controller;
 
 import com.ego.commons.pojo.EasyUiTree;
+import com.ego.commons.pojo.EgoResult;
 import com.ego.manage.service.TbItemCatService;
+import com.ego.pojo.TbContentCategory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,5 +29,6 @@ public class TbItemCatController {
         System.out.println(easyUiTrees);
         return  easyUiTrees;
     }
+
 
 }
