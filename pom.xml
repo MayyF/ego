@@ -17,6 +17,7 @@
         <module>ego-item</module>
         <module>ego-portal</module>
         <module>ego-redis</module>
+        <module>ego-search</module>
     </modules>
 
     <properties>
@@ -42,11 +43,33 @@
         <tomcat.version>2.2</tomcat.version>
         <pagehelper.version>4.1.6</pagehelper.version>
         <ftpclient.version>3.3</ftpclient.version>
+        <solrj-version>5.3.1</solrj-version>
+        <httpclient-version>4.4.1</httpclient-version>
 
     </properties>
     <dependencyManagement>
-
         <dependencies>
+
+            <!--myredis-->
+            <dependency>
+                <groupId>com.ego</groupId>
+                <artifactId>ego-redis</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
+            <!-- httpclient -->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpclient-version}</version>
+            </dependency>
+            <!-- solrJ -->
+            <dependency>
+                <groupId>org.apache.solr</groupId>
+                <artifactId>solr-solrj</artifactId>
+                <version>${solrj-version}</version>
+            </dependency>
+
             <!-- 分页插件 -->
             <dependency>
                 <groupId>com.github.pagehelper</groupId>

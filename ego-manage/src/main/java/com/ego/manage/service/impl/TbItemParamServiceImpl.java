@@ -24,6 +24,7 @@ public class TbItemParamServiceImpl implements TbItemParamService {
 
     @Reference
     private TbItemParamDubboService tbItemParamDubboService;
+
     @Reference
     private TbItemCatDubboService tbItemCatDubboService;
 

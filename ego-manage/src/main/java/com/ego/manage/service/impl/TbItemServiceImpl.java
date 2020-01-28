@@ -1,9 +1,14 @@
 package com.ego.manage.service.impl;
 
+import com.ego.commons.utils.HttpClientUtil;
 import com.ego.commons.utils.IDUtils;
+import com.ego.commons.utils.JsonUtils;
+import com.ego.dubbo.service.TbItemDescDubboService;
 import com.ego.pojo.TbItemDesc;
 import com.ego.pojo.TbItemParam;
 import com.ego.pojo.TbItemParamItem;
+import com.ego.redis.JedisDao;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.dubbo.config.annotation.Reference;
@@ -12,18 +17,35 @@ import com.ego.dubbo.service.TbItemDubboService;
 import com.ego.manage.service.TbItemService;
 import com.ego.pojo.TbItem;
 
+import javax.annotation.Resource;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class TbItemServiceImpl implements TbItemService{
 	@Reference
 	private TbItemDubboService tbItemDubboService;
 
+	@Reference
+	private TbItemDescDubboService tbItemDescDubboService;
+
+	@Value("${search.url}")
+	private String url;
+
+	@Value("${redis.item.key}")
+	private String itemKey;
+
+	@Resource
+	private JedisDao jedisDaoImpl;
+
 
 	@Override
 	public EasyUIDataGrid show(int page, int rows) {
 		return tbItemDubboService.show(page, rows);
 	}
+
+
 	@Override
 	public int update(String ids, byte status) {
 		int index = 0 ;
@@ -33,6 +55,11 @@ public class TbItemServiceImpl implements TbItemService{
 			item.setId(Long.parseLong(id));
 			item.setStatus(status);
 			index +=tbItemDubboService.updItemStatus(item);
+
+			if(status==2||status==3){
+				jedisDaoImpl.del(itemKey+id);
+			}
+
 		}
 		if(index==idsStr.length){
 			return 1;
@@ -65,6 +92,14 @@ public class TbItemServiceImpl implements TbItemService{
 		index=tbItemDubboService.insTbItemDesc(item,itemDesc,param);
 		System.out.println("index:"+index);
 
+		new Thread(){
+			public void run(){
+				Map<String,Object>map=new HashMap<>();
+				map.put("item",item);
+				map.put("desc",desc);
+				HttpClientUtil.doPostJson(url, JsonUtils.objectToJson(map));
+			}
+		}.start();
 		return index;
 	}
 }

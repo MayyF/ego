@@ -11,6 +11,7 @@ import java.util.List;
  */
 
 public interface TbContentDubboService {
+
     EasyUIDataGrid selContentByPage(long categoryId, int page, int rows);
 
     int insContent(TbContent tbContent);

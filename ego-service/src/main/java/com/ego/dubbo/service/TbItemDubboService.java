@@ -5,6 +5,8 @@ import com.ego.pojo.TbItem;
 import com.ego.pojo.TbItemDesc;
 import com.ego.pojo.TbItemParamItem;
 
+import java.util.List;
+
 public interface TbItemDubboService {
 	/**
 	 * 商品分页查询
@@ -21,8 +23,26 @@ public interface TbItemDubboService {
 	 */
 	int updItemStatus(TbItem tbItem);
 
-
+	/**
+	 * 新增包含商品表和商品描述表
+	 * @param tbItem
+	 * @param desc
+	 * @return
+	 */
 	int insTbItemDesc(TbItem tbItem, TbItemDesc desc, TbItemParamItem paramItem)throws Exception;
 
+	/**
+	 * 通过状态查询全部可用数据
+	 * @return
+	 */
+	List<TbItem> sellAllByStatus(byte status);
+
+
+	/**
+	 * 根据主键查询
+	 * @param id
+	 * @return
+	 */
+	TbItem selById(long id);
 
 }

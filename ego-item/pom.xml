@@ -37,6 +37,12 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
+        <!--redis dependency-->
+        <dependency>
+            <groupId>com.ego</groupId>
+            <artifactId>ego-redis</artifactId>
+        </dependency>
+
         <!-- jedis -->
         <dependency>
             <groupId>redis.clients</groupId>
