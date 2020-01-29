@@ -43,6 +43,7 @@ public class JsonUtils {
         JavaType javaType=MPR.getTypeFactory().constructParametricType(List.class,beanType);
         try {
             List<T>list=MPR.readValue(jsonData,javaType);
+            return list;
         } catch (IOException e) {
             e.printStackTrace();
         }

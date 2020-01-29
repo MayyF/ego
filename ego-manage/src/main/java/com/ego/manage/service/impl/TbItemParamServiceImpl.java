@@ -22,10 +22,10 @@ import java.util.List;
 @Service
 public class TbItemParamServiceImpl implements TbItemParamService {
 
-    @Reference
+    @Reference(timeout = 10000)
     private TbItemParamDubboService tbItemParamDubboService;
 
-    @Reference
+    @Reference(timeout = 1000)
     private TbItemCatDubboService tbItemCatDubboService;
 
     @Override

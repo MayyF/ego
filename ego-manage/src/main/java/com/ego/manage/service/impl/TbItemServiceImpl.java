@@ -5,7 +5,6 @@ import com.ego.commons.utils.IDUtils;
 import com.ego.commons.utils.JsonUtils;
 import com.ego.dubbo.service.TbItemDescDubboService;
 import com.ego.pojo.TbItemDesc;
-import com.ego.pojo.TbItemParam;
 import com.ego.pojo.TbItemParamItem;
 import com.ego.redis.JedisDao;
 import org.springframework.beans.factory.annotation.Value;

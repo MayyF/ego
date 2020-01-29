@@ -3,8 +3,6 @@ package com.ego.manage.service;
 import com.ego.commons.pojo.EasyUIDataGrid;
 import com.ego.pojo.TbContent;
 
-import java.util.List;
-
 /**
  * @Auther:S
  * @Date:19/7/24

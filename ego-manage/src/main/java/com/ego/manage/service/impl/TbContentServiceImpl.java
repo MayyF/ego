@@ -6,9 +6,7 @@ import com.ego.commons.utils.JsonUtils;
 import com.ego.dubbo.service.TbContentDubboService;
 import com.ego.manage.service.TbContentService;
 import com.ego.pojo.TbContent;
-import com.ego.pojo.TbContentExample;
 import com.ego.redis.JedisDao;
-import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 

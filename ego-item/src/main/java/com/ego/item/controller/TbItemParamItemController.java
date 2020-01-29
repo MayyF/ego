@@ -2,7 +2,9 @@ package com.ego.item.controller;
 
 import com.ego.item.service.TbItemParamItemService;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 
@@ -23,8 +25,12 @@ public class TbItemParamItemController {
      */
 
     @RequestMapping(value = "item/param/{id}.html",produces = "text/html;charset=utf-8")
-    public String param(long id){
-        return tbItemParamItemServiceImpl.showParam(id);
+    @ResponseBody
+    public String param(@PathVariable("id") long id){
+        id=48L;
+        String res=tbItemParamItemServiceImpl.showParam(id);
+        System.out.println(res);
+        return res;
     }
 
 }

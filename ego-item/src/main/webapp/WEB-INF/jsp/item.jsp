@@ -280,6 +280,7 @@
 				//如果没有查询过规格参数，就做请求
 				if (!itemControl.haveParam) {
 					$.get(itemControl.param.paramUrl+itemId+".html", function(data){
+					    console.log(data);
 						//返回商品规格的html，直接显示到页面
 						$("#product-detail-2").append(data);
 						//更改flag状态

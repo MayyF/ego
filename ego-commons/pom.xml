@@ -27,6 +27,12 @@
             <artifactId>jackson-databind</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+        </dependency>
+
         <!--httpClinet-->
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>

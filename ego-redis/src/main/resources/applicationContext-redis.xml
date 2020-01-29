@@ -42,7 +42,7 @@
             <set>
                 <bean class="redis.clients.jedis.HostAndPort">
                     <constructor-arg name="host" value="${host-default}"/>
-                    <constructor-arg name="port" value="7000"/>
+                    <constructor-arg name="port" value="7006"/>
                 </bean>
                 <bean class="redis.clients.jedis.HostAndPort">
                     <constructor-arg name="host" value="${host-default}"/>

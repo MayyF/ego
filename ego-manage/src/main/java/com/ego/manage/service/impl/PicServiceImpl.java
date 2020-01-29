@@ -4,7 +4,6 @@ import com.ego.commons.utils.FtpUtil;
 import com.ego.commons.utils.IDUtils;
 import com.ego.manage.service.PicService;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 

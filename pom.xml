@@ -18,6 +18,7 @@
         <module>ego-portal</module>
         <module>ego-redis</module>
         <module>ego-search</module>
+        <module>ego-passport</module>
     </modules>
 
     <properties>
@@ -45,6 +46,7 @@
         <ftpclient.version>3.3</ftpclient.version>
         <solrj-version>5.3.1</solrj-version>
         <httpclient-version>4.4.1</httpclient-version>
+        <servlet-api-version>2.5</servlet-api-version>
 
     </properties>
     <dependencyManagement>
@@ -168,6 +170,12 @@
                 <groupId>com.101tec</groupId>
                 <artifactId>zkclient</artifactId>
                 <version>${zkClient.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>${servlet-api.version}</version>
             </dependency>
 
             <dependency>

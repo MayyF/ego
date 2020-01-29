@@ -6,7 +6,6 @@ import com.ego.commons.pojo.EgoResult;
 import com.ego.commons.utils.IDUtils;
 import com.ego.dubbo.service.TbContentCategoryDubboService;
 import com.ego.manage.service.TbContentCategoryService;
-import com.ego.pojo.TbContent;
 import com.ego.pojo.TbContentCategory;
 import org.springframework.stereotype.Service;
 

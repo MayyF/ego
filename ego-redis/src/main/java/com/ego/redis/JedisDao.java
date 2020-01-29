@@ -13,4 +13,6 @@ public interface JedisDao {
     String set(String key, String vaule);
 
     String get(String key);
+
+    Long expire(String key, int seconds);
 }

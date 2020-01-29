@@ -15,7 +15,7 @@ import java.util.Set;
  */
 public class Main {
     private String host="192.168.43.56";
-    private int port=7000;
+    private int port=7001;
 
     @Test
     public void test1(){

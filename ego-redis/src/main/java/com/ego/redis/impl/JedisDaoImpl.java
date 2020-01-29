@@ -1,7 +1,6 @@
 package com.ego.redis.impl;
 
 import com.ego.redis.JedisDao;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import redis.clients.jedis.JedisCluster;
 
@@ -35,5 +34,10 @@ public class JedisDaoImpl implements JedisDao {
     @Override
     public String get(String key) {
         return jedisClients.get(key);
+    }
+
+    @Override
+    public Long expire(String key, int seconds) {
+        return jedisClients.expire(key,seconds);
     }
 }
