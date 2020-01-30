@@ -17,6 +17,13 @@ public class Main {
     private String host="192.168.43.56";
     private int port=7001;
 
+
+    @Test
+    public void test2(){
+        String eq="http://localhost:8084/user/showLogin?interurl=%snum=%s";
+        System.out.println(String.format(eq,"diyi","dier"));
+    }
+
     @Test
     public void test1(){
 
