@@ -46,6 +46,10 @@
 	<dubbo:service interface="com.ego.dubbo.service.TbUserDubboService" ref="tbUserDubboServiceImpl"/>
 	<bean id="tbUserDubboServiceImpl" class="com.ego.dubbo.service.impl.TbUserDubboServiceImpl"/>
 
+	<!--Order-->
+	<dubbo:service interface="com.ego.dubbo.service.TbOrderDubboService" ref="tbOrderDubboServiceImpl"/>
+	<bean id="tbOrderDubboServiceImpl" class="com.ego.dubbo.service.impl.TbOrderDubboServiceImpl"/>
+
 	<import resource="../../applicationContext.xml"/>
 </beans>
 
