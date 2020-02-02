@@ -24,4 +24,11 @@
     </bean>
     <!-- Mutipart解析器 -->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
+
+    <!--interceptor-->
+    <mvc:interceptors>
+        <bean class="com.ego.order.interception.LoginInterceptor"/>
+    </mvc:interceptors>
+
+
 </beans>

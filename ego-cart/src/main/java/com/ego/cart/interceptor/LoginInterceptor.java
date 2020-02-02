@@ -18,7 +18,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 
     private static final String COOKIEKEY="TT_TOKEN";
     private String reqUrl="http://localhost:8084/user/token/%s";
-    private String reqDir="http://localhost:8084/user/showLogin?interurl=%s%3Fnum=%s";
+    private String reqDir="http://localhost:8084/user/showLogin?interurl=%s?num=%s";
     @Override
     public boolean preHandle(HttpServletRequest req, HttpServletResponse res, Object o) throws Exception {
 
@@ -27,7 +27,8 @@ public class LoginInterceptor implements HandlerInterceptor {
         if(token!=null&&!token.equals("")){
             String url=String.format(reqUrl,token);
             System.out.println("interceptor url:"+url);
-            String json= HttpClientUtil.doPostJson(url,COOKIEKEY);
+            //String json= HttpClientUtil.doPostJson(url,COOKIEKEY);
+            String json=HttpClientUtil.doPost(url);
             EgoResult er= JsonUtils.jsonToPojo(json,EgoResult.class);
             if(er.getStatus()==200){
                 return true;

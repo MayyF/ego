@@ -48,7 +48,7 @@ public class CartServiceImpl implements CartService {
     public void addCart(long id, int num, HttpServletRequest request) {
         List<TbItemChild>list=new ArrayList<>();
         String token= CookieUtils.getCookieValue(request,tokenKey);
-        String jsonUser= HttpClientUtil.doPost(passportUrl+token);
+        String jsonUser= HttpClientUtil.doPost(String.format(passportUrl,token));
         EgoResult er= JsonUtils.jsonToPojo(jsonUser,EgoResult.class);
         String key=cartKey+((LinkedHashMap)er.getData()).get("username");
         if(jedisDaoImpl.exists(key)){
@@ -80,7 +80,7 @@ public class CartServiceImpl implements CartService {
     @Override
     public List<TbItemChild> showCart(HttpServletRequest request) {
         String token=CookieUtils.getCookieValue(request,tokenKey);
-        String jsonUser=HttpClientUtil.doPost(passportUrl+token);
+        String jsonUser=HttpClientUtil.doPost(String.format(passportUrl,token));
         EgoResult er=JsonUtils.jsonToPojo(jsonUser,EgoResult.class);
         String key=cartKey+((LinkedHashMap)er.getData()).get("username");
         String json=jedisDaoImpl.get(key);

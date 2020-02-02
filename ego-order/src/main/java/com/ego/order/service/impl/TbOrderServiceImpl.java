@@ -40,7 +40,7 @@ public class TbOrderServiceImpl implements TbOrderService {
     @Value("${passport.url}")
     private String passprtUrl;
 
-    @Value("token.key")
+    @Value("${token.key}")
     private String tokenKey;
 
     @Reference
@@ -53,7 +53,8 @@ public class TbOrderServiceImpl implements TbOrderService {
     @Override
     public List<TbItemChild> showOrderCart(List<Long> ids, HttpServletRequest request) {
         String token= CookieUtils.getCookieValue(request,tokenKey);
-        String rst= HttpClientUtil.doPost(passprtUrl+token);
+        String url=String.format(passprtUrl,token);
+        String rst= HttpClientUtil.doPost(url);
         EgoResult er= JsonUtils.jsonToPojo(rst,EgoResult.class);
         String key=cartKey+((LinkedHashMap)er.getData()).get("username");
         String json=jedisDaoImpl.get(key);
@@ -85,7 +86,8 @@ public class TbOrderServiceImpl implements TbOrderService {
         order.setCreateTime(date);
         order.setUpdateTime(date);
         String token=CookieUtils.getCookieValue(request,tokenKey);
-        String resJson=HttpClientUtil.doPost(passprtUrl+token);
+        String cmUrl=String.format(passprtUrl,token);
+        String resJson=HttpClientUtil.doPost(cmUrl);
         EgoResult er=JsonUtils.jsonToPojo(resJson,EgoResult.class);
         Map user=(LinkedHashMap)er.getData();
         order.setUserId(Long.parseLong(user.get("id").toString()));

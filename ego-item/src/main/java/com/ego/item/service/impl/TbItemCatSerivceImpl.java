@@ -19,7 +19,7 @@ import java.util.List;
 @Service
 public class TbItemCatSerivceImpl implements TbItemCatSerivce {
 
-    @Reference(timeout = 10000)
+    @Reference(timeout = 30000)
     private TbItemCatDubboService tbItemCatDubboServiceImpl;
 
     @Override

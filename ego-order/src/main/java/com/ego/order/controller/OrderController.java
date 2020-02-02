@@ -29,6 +29,7 @@ public class OrderController {
         return "order-cart";
     }
 
+    @RequestMapping("order/create.html")
     public String createOrder(MyOrderParam param,HttpServletRequest request){
         EgoResult er=tbOrderServiceImpl.create(param,request);
         if(er.getStatus()==200){
